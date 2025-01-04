@@ -1,2 +1,2 @@
-# Bank of Bharat
- Banking web application created using Django By Bhargav Gurav
+# Bank of odisha
+ Banking web application created using Django By pani Ranjit

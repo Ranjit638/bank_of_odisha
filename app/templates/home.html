@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block nav-brand %}
+    <a class="navbar-brand fs-2" style="color: rgb(210, 87, 22)" href="#">BOO</a>
+{% endblock %}
+
+{% block service %}
+<li class="nav-item">
+  <a class="nav-link fs-4" href="{% url 'profile' %}" style="color: rgb(18, 232, 32)" >Services</a>
+</li>
+{% endblock %}
+
+{% block register %}
+            <li class="nav-item ms-2">
+                <a class="nav-link  fs-4" aria-current="page" href="{% url 'register' %}" style="color: rgb(18, 232, 32)">Register</a>
+            </li>
+{% endblock %}
+
+{% block about %}
+<li class="nav-item ms-2">
+  <a class="nav-link  fs-4" aria-current="page" href="{% url 'about' %}" style="color: rgb(18, 232, 32)" data-bs-toggle="tooltip" data-bs-placement="down" title="about our bank">About</a>
+</li>
+{% endblock %}
+
+{% block login-box %}
+{% if not user.is_authenticated %}
+    <li class="nav-item">     
+    <a href="{% url 'user_login' %}" class="btn btn-primary fs-4" >Login</a>
+    </li>
+{% else %}
+    <li class="nav-item">     
+        <button class="btn btn-outline-warning fs-4" data-bs-toggle="modal" data-bs-target="#logoutmodal">Logout</button>
+    </li>
+{% endif %}
+{% endblock %}
+{% block feedback %}
+    <li class="nav-item ms-2">
+         <a class="nav-link  fs-4" aria-current="page" href="{% url 'feedback' %}" style="color: rgb(18, 232, 32)">Feedback</a>
+    </li>
+{% endblock feedback %}
+{% block data %}
+<div class="container-fluid home d-flex justify-content-center align-items-center">
+    <div class="row text-light home-content">
+        <div class="col-lg-12">
+            <h2 class="text-center">Bank of Odisha</h2>
+            <p class="fs-4 text-center">Bank of People of India</p>
+        </div>
+        {% if not user.is_authenticated %}
+        <div class="col-lg-12 d-flex justify-content-center">
+            <a class="btn btn-outline-primary px-5 rounded-pill fs-5" href="{% url 'user_login' %}">Log-In</a>
+        </div>
+        {% endif %}
+        
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        {% if message.tags == 'success' %}
+        <script>
+            let mess = '{{ message }}';
+        swal('Perfect !', mess, 'success');
+        </script>
+        {% elif message.tags == 'error' %}
+                
+            <script>
+            let message = '{{ message }}';
+                swal('Denied !', message , 'error');
+            </script>
+        {% endif %}
+    {% endfor %}
+    {% endif %}
+</div>
+
+
+
+
+
+
+{% endblock %}

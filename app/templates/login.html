@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block home %}
+         <li class="nav-item ms-2">
+             <a class="nav-link active fs-4" aria-current="page" href="{% url 'home' %}" style="color: rgb(18, 232, 32)">Home</a>
+        </li>
+{% endblock %}
+{% block nav-brand %}
+    <a class="navbar-brand fs-2" style="color: rgb(192, 76, 27)" href="#">Login</a>
+{% endblock %}
+{% block register %}
+            <li class="nav-item ms-2">
+                <a class="nav-link  fs-4" aria-current="page" href="{% url 'register' %}" style="color: rgb(18, 232, 32)">Register</a>
+            </li>
+{% endblock %}
+
+{% block about %}
+<li class="nav-item ms-2">
+  <a class="nav-link  fs-4" aria-current="page" href="{% url 'about' %}" style="color: rgb(18, 232, 32)" data-bs-toggle="tooltip" data-bs-placement="down" title="about our bank">About</a>
+</li>
+{% endblock %}
+{% block feedback %}
+    <li class="nav-item ms-2">
+         <a class="nav-link  fs-4" aria-current="page" href="{% url 'feedback' %}" style="color: rgb(18, 232, 32)">Feedback</a>
+    </li>
+{% endblock feedback %}
+
+{% block data %}
+<div class="container-fluid login-container" >
+    <div class="row  d-flex justify-content-center align-items-center" style='height: 75vh;'  >
+        <div class="col-lg-6 col-md-8 col-11 p-md-5 p-3 login-box">
+            
+            <div class="btn btn-outline-dark col-12"><i class="fas fa-lock"></i> Login</div>
+            <form  method='post'>
+                {% csrf_token %}
+                <div class="form-group my-3">
+                    <label for="">Account holder's first name</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-user p-2"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" name='name'>
+                    </div>
+                </div>
+                <div class="form-group my-3">
+                    <label for="">Date of birth</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-calendar-days p-2"></i>
+                            </span>
+                        </div>
+                        <input type="date" class="form-control" name='date'>
+                    </div>
+                </div>
+                <div class="form-group my-3">
+                    <label for="">Password</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-key p-2"></i>
+                            </span>
+                        </div>
+                        <input type="password" class="form-control" name='password'>
+                    </div>
+                </div>
+                <div class="form-group mt-4 d-flex justify-content-center">
+                    <input type='submit' class="btn btn-success rounded-pill px-4" value='Login'>
+                </div>
+            </form> 
+            
+        </div>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        {% if message.tags == 'success' %}
+        <script>
+            let mess = '{{ message }}';
+        swal('Perfect !', mess, 'success');
+        </script>
+        {% elif message.tags == 'error' %}
+                
+            <script>
+            let message = '{{ message }}';
+                swal('Denied !', message , 'error');
+            </script>
+        {% endif %}
+    {% endfor %}
+    {% endif %}
+</div>
+
+
+{% endblock data %}

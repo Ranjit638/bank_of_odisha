@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% block title %}Registration{% endblock %}
+{% block home %}
+         <li class="nav-item ms-2">
+             <a class="nav-link active fs-4" aria-current="page" href="{% url 'home' %}" style="color: rgb(18, 232, 32)">Home</a>
+        </li>
+{% endblock %}
+{% block service %}
+<li class="nav-item">
+  <a class="nav-link fs-4" href="{% url 'profile' %}" style="color: rgb(18, 232, 32)" >Services</a>
+</li>
+{% endblock %}
+
+{% block about %}
+<li class="nav-item ms-2">
+  <a class="nav-link  fs-4" aria-current="page" href="{% url 'about' %}" style="color: rgb(18, 232, 32)" data-bs-toggle="tooltip" data-bs-placement="down" title="about our bank">About</a>
+</li>
+{% endblock %}
+{% block nav-brand %}
+    <a class="navbar-brand fs-2" style="color: rgb(192, 76, 27)" href="#">Registration</a>
+{% endblock %}
+{% block login-box %}
+{% if not user.is_authenticated %}
+    <li class="nav-item">     
+    <a href="{% url 'user_login' %}" class="btn btn-primary fs-4" >Login</a>
+    </li>
+{% else %}
+    <li class="nav-item">     
+        <button class="btn btn-outline-warning fs-4" data-bs-toggle="modal" data-bs-target="#logoutmodal">Logout</button>
+    </li>
+{% endif %}
+{% endblock %}
+{% block feedback %}
+    <li class="nav-item ms-2">
+         <a class="nav-link  fs-4" aria-current="page" href="{% url 'feedback' %}" style="color: rgb(18, 232, 32)">Feedback</a>
+    </li>
+{% endblock feedback %}
+
+{% block data %}
+<div class="container-fluid py-3 form-box">
+    <div class="row d-flex justify-content-around">
+        <div class="col-lg-6">
+            <form action="" method='post'>
+                {% csrf_token %}
+                <div class="row my-1">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="" >First Name</label>
+                            <input type="text" class="form-control" id="fname" name="fname">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="" >Last Name</label>
+                            <input type="text" class="form-control" id="lname" name="lname">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="">Email-ID</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa-solid fa-envelope p-2"></i></span>
+                        </div>
+                        <input type="email" class="form-control" placeholder="Enter Email.." id="email" name="email">
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="">Date of Birth</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa-solid fa-calendar-days p-2"></i></span>
+                        </div>
+                        <input type="date" class="form-control" name="date">
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="">Aadhar Number</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa-solid fa-address-card p-2"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Enter Aadhar number.." id='aadhar' maxlength="12" name="aadhar">
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="">Contact Number</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa-solid fa-phone p-2"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Enter mobile number.." id='phone' name="mobile">
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="">Account Type</label>
+                    <div class="input-group">            
+                        <select name="type" id="" class="form-control">
+                            <option value="Saving">Saving</option>
+                            <option value="Current">Current</option>
+                        </select>
+                    </div>
+                    
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="">Gender</label> 
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa-solid fa-venus-mars p-2"></i></span>
+                        </div>
+                        <select name="gender" id="" class="form-control">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Trans">Trans</option>
+                        </select>
+                    </div>
+                    
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="">First Deposite</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa-solid fa-indian-rupee-sign p-2"></i></span>
+                        </div>
+                        <input type="number" class="form-control" placeholder="Enter amount.." name="deposite">
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="">Password</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-key p-2"></i>
+                            </span>
+                        </div>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                </div>
+
+                <div class="form-group my-3">
+                    <button class="btn btn-success px-4 fs-4">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        {% if message.tags == 'success' %}
+        <script>
+            let mess = '{{ message }}';
+        swal('Perfect !', mess, 'success');
+        </script>
+        {% elif message.tags == 'error' %}
+                
+            <script>
+            let message = '{{ message }}';
+                swal('Denied !', message , 'error');
+            </script>
+        {% endif %}
+    {% endfor %}
+    {% endif %}
+</div>
+
+
+{% endblock data %}

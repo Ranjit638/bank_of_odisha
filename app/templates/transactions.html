@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %}Records{% endblock %}
+
+{% block nav-brand %}
+    <a class="navbar-brand fs-2" style="color: rgb(192, 76, 27)" href="#">Records</a>
+{% endblock %}
+{% block home %}
+         <li class="nav-item ms-2">
+             <a class="nav-link active fs-4" aria-current="page" href="{% url 'home' %}" style="color: rgb(18, 232, 32)">Home</a>
+        </li>
+{% endblock %}
+{% block service %}
+<li class="nav-item">
+  <a class="nav-link fs-4" href="{% url 'profile' %}" style="color: rgb(18, 232, 32)" >Services</a>
+</li>
+{% endblock %}
+{% block register %}
+            <li class="nav-item ms-2">
+                <a class="nav-link  fs-4" aria-current="page" href="{% url 'register' %}" style="color: rgb(18, 232, 32)">Register</a>
+            </li>
+{% endblock %}
+
+{% block about %}
+<li class="nav-item ms-2">
+  <a class="nav-link  fs-4" aria-current="page" href="{% url 'about' %}" style="color: rgb(18, 232, 32)" data-bs-toggle="tooltip" data-bs-placement="down" title="about our bank">About</a>
+</li>
+{% endblock %}
+{% block login-box %}
+{% if not user.is_authenticated %}
+    <li class="nav-item">     
+    <a href="{% url 'user_login' %}" class="btn btn-primary fs-4" >Login</a>
+    </li>
+{% else %}
+    <li class="nav-item">     
+        <button class="btn btn-outline-warning fs-4" data-bs-toggle="modal" data-bs-target="#logoutmodal">Logout</button>
+    </li>
+{% endif %}
+{% endblock %}
+{% block feedback %}
+    <li class="nav-item ms-2">
+         <a class="nav-link  fs-4" aria-current="page" href="{% url 'feedback' %}" style="color: rgb(18, 232, 32)">Feedback</a>
+    </li>
+{% endblock feedback %}
+{% block data %}
+<div class="container-fluid">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-lg-8 text-center fs-2">Transaction History</div>
+        <div class="col-lg-8 ">
+            
+            <table class="table table-dark">
+                <thead class="thead">
+                    <tr>
+                        <td>Date</td>
+                        <td>Transaction</td>
+                        <td>Amount</td>
+                    </tr>
+                </thead>
+                {% if records|length == 0 %}
+                </table>
+                <div class="col-lg-12 d-flex justify-content-center align-items-center" style="height: 42vh;">
+                    <h3 class="text-danger fw-bold">No records yet.</h3>
+                </div>
+                {% else %}
+                <tbody>
+                    
+                    {% for i in records %}
+                    <tr>
+                        <td>{{i.date}}</td>
+                        <td>{{i.transaction}}</td>
+                        <td>{{i.amount}}</td>
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+                {% endif %}
+            </table>
+            
+        </div>
+    </div>
+</div>
+{% endblock data %}
+

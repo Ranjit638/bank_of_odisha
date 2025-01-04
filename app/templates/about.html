@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}About{% endblock %}
+
+{% block nav-brand %}
+    <a class="navbar-brand fs-2" style="color: rgb(192, 76, 27)" href="#">About</a>
+{% endblock %}
+{% block home %}
+         <li class="nav-item ms-2">
+             <a class="nav-link active fs-4" aria-current="page" href="{% url 'home' %}" style="color: rgb(18, 232, 32)">Home</a>
+        </li>
+{% endblock %}
+{% block service %}
+<li class="nav-item">
+  <a class="nav-link fs-4" href="{% url 'profile' %}" style="color: rgb(18, 232, 32)" >Services</a>
+</li>
+{% endblock %}
+{% block register %}
+            <li class="nav-item ms-2">
+                <a class="nav-link  fs-4" aria-current="page" href="{% url 'register' %}" style="color: rgb(18, 232, 32)">Register</a>
+            </li>
+{% endblock %}
+{% block feedback %}
+    <li class="nav-item ms-2">
+         <a class="nav-link  fs-4" aria-current="page" href="{% url 'feedback' %}" style="color: rgb(18, 232, 32)">Feedback</a>
+    </li>
+{% endblock feedback %}
+{% block login-box %}
+{% if not user.is_authenticated %}
+    <li class="nav-item">     
+    <a href="{% url 'user_login' %}" class="btn btn-primary fs-4" >Login</a>
+    </li>
+{% else %}
+    <li class="nav-item">     
+        <button class="btn btn-outline-warning fs-4" data-bs-toggle="modal" data-bs-target="#logoutmodal">Logout</button>
+    </li>
+{% endif %}
+{% endblock %}
+{% block data %}
+<div class="container-fluid bg-secondary text-light">
+    <div class="row d-flex justify-content-around">
+        <div class="col-lg-10 text-center  my-3 border-bottom">
+            <h2 class="font-weight-bold fs-1 ">About</h2>
+            <p class="fs-4">Bank of Odisha</p>
+            <p class="fs-4">Bank of People of India</p>
+        </div>
+        
+        <div class="col-lg-8 d-flex justify-content-center  my-3 border-bottom">
+            <div class="cardbox d-flex align-items-end">
+                <div class="info">
+                    <div class="discription mt-3 text-center">
+                        <img src="{% static 'images/manager1.jpg' %}" alt="Manager Image" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                        <div class="font-weight-bold fs-4">Mr. Ranjit Pani</div>
+                        <div>--Manager (kamakhya nagar branch)</div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock data %}

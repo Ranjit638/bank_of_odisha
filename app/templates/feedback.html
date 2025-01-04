@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}Feedback{% endblock title %}
+{% block nav-brand %}
+    <a class="navbar-brand fs-2" style="color: rgb(192, 76, 27)" href="#">Feedback</a>
+{% endblock %}
+{% block home %}
+         <li class="nav-item ms-2">
+             <a class="nav-link active fs-4" aria-current="page" href="{% url 'home' %}" style="color: rgb(18, 232, 32)">Home</a>
+        </li>
+{% endblock %}
+{% block service %}
+<li class="nav-item">
+  <a class="nav-link fs-4" href="{% url 'profile' %}" style="color: rgb(18, 232, 32)" >Services</a>
+</li>
+{% endblock %}
+{% block register %}
+            <li class="nav-item ms-2">
+                <a class="nav-link  fs-4" aria-current="page" href="{% url 'register' %}" style="color: rgb(18, 232, 32)">Register</a>
+            </li>
+{% endblock %}
+
+{% block about %}
+<li class="nav-item ms-2">
+  <a class="nav-link  fs-4" aria-current="page" href="{% url 'about' %}" style="color: rgb(18, 232, 32)" data-bs-toggle="tooltip" data-bs-placement="down" title="about our bank">About</a>
+</li>
+{% endblock %}
+{% block login-box %}
+{% if not user.is_authenticated %}
+    <li class="nav-item">     
+    <a href="{% url 'user_login' %}" class="btn btn-primary fs-4" >Login</a>
+    </li>
+{% else %}
+    <li class="nav-item">     
+        <button class="btn btn-outline-warning fs-4" data-bs-toggle="modal" data-bs-target="#logoutmodal">Logout</button>
+    </li>
+{% endif %}
+{% endblock %}
+
+{% block data %}
+<div class="container-fluid feedback-container" >
+    <div class="row d-flex justify-content-center align-items-center" >
+        <div class="col-lg-6 col-md-7 col-sm-8 col-9 feedback-form p-4" style="height: 57vh;" >
+            <div class="col-12 btn btn-dark"> Feedback Form</div>
+            <form action="" method="post">{% csrf_token %}
+                <div class="input-group mt-3 mb-2">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    <input type="text" class="form-control" placeholder="Name" name="name">
+                </div>
+                <div class="input-group mt-3 mb-2">
+                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                    <input type="text" class="form-control" placeholder="phone" name="phone">
+                </div>
+                <div class="mt-3 mb-2">
+                    <label  class="form-label">Feedback</label>
+                    <textarea name="feedback" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="d-grid mt-2">
+                    <input type="submit" value="Submit" class="btn btn-outline-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock data %}
+

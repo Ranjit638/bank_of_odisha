@@ -1,0 +1,130 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+/* nav start  */
+.icons a{
+    color:  rgb(18, 232, 32);
+}
+.icons a:hover, .navbar-nav li a:hover, .link ul li a:hover{
+    color: white !important;
+    transition-duration: .7s !important;
+}
+
+/* nav end  */
+
+/* home start  */
+.home{
+    height: 62vh;
+    position: relative;
+    top: 0;
+    background: url('https://g.foolcdn.com/editorial/images/588686/generic-bank-getty.jpg');
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.home::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+
+}
+.home-content{
+    position: relative;
+}
+/* home end  */
+
+/* registration page  */
+.form-box{
+    background-color: rgba(0, 0, 0, .5);
+}
+form label{
+  font-weight: 700;
+}
+/* registration page  */ 
+
+/* about page  */
+.cardbox{
+    border: 2px solid white;
+    box-shadow: 0 0 10px white;
+    position: relative;
+    height: 300px;
+    /* background: url('../images/manager1.jpg'); */
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+}
+.cardbox::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+}
+.cardbox .info{
+    position: relative;
+}
+
+.cardbox .discription{
+    font-weight: 700;
+}
+
+/* about page  */
+
+/* profile page  */
+.side-nav{
+    height: auto;
+}
+
+.side-nav ul li .btn{
+    min-width: 150px !important;
+}
+.info-box{
+    padding: 3rem;
+}
+.service-box{
+    border: 1px solid white;
+    border-radius: 8px;
+    box-shadow: 16px 16px solid gray;
+}
+.info-table{
+   
+    box-shadow: 8px 8px solid gray;
+}
+/* profile page  */
+
+/**********************************************
+                LOGIN
+**********************************************/
+.login-container{
+    background: linear-gradient(35deg, rgba(164, 223, 76, 0.3), rgba(229, 58, 235, 0.4), rgba(201, 141, 21, 0.3) );
+}
+.login-box{
+    border: 2px solid white;
+    border-radius: 7px;
+    box-shadow: 0 8px 16px 0 solid gray;
+    background: rgba(255, 255, 255, .7);
+}
+
+/**********************************************
+                FEEDBACK
+**********************************************/
+.feedback-container{
+    background: linear-gradient(25deg, rgba(180, 76, 76, 0.3), rgba(18, 174, 125, 0.3), rgba(249, 82, 249, 0.3));
+}
+.feedback-form{
+    border: 1px solid white;
+    border-radius: 7px;
+    background: transparent;
+    background: rgba(255, 255, 255, .7);
+    box-shadow: 0 16px 32px 0 solid gray;
+}
